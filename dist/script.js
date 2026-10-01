@@ -1,6 +1,7 @@
 const form = document.querySelector("#signup-form");
 const note = document.querySelector("#form-note");
 const eventsList = document.querySelector("#events-list");
+const eventsView = document.body.dataset.eventsView || "upcoming";
 const eventsCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSPdQIiWVq-aw4bAbPij5gVyrszYU5fFAFJ7YJ1CjAINH1h1EHB8b4KXSjXST-pHHdYQody_a8b19A4/pub?gid=1665960344&single=true&output=csv";
 
 const fallbackEvents = [
@@ -10,6 +11,9 @@ const fallbackEvents = [
     "Artist / Event": "Friday Night Patio Session",
     Description: "Local acoustic set with interview clips coming soon.",
     Facebook: "https://www.facebook.com/theguiltygoose",
+    Video: "",
+    "Photo Gallery": "",
+    "Featured Image": "",
     Status: "Published",
   },
   {
@@ -18,6 +22,9 @@ const fallbackEvents = [
     "Artist / Event": "Saturday House Band",
     Description: "Full-band set, drink specials, and a short pre-show Q&A.",
     Facebook: "https://www.facebook.com/theguiltygoose",
+    Video: "",
+    "Photo Gallery": "",
+    "Featured Image": "",
     Status: "Published",
   },
 ];
@@ -100,14 +107,32 @@ function linkFor(label, url) {
   return `<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`;
 }
 
+function eventTime(event) {
+  const date = new Date(`${event.Date}T12:00:00`);
+  return Number.isNaN(date.getTime()) ? null : date.getTime();
+}
+
+function todayTime() {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return today.getTime();
+}
+
 function eventCard(event) {
   const date = formatEventDate(event.Date);
-  const links = [
+  const artistLinks = [
     linkFor("Website", event.Website),
     linkFor("Facebook", event.Facebook),
     linkFor("YouTube", event.YouTube),
     linkFor("TikTok", event.TikTok),
   ].filter(Boolean);
+  const mediaLinks = [
+    linkFor("View Photos", event["Photo Gallery"]),
+    linkFor("Watch Video", event.Video),
+  ].filter(Boolean);
+  const image = event["Featured Image"]
+    ? `<img class="event-image" src="${event["Featured Image"]}" alt="">`
+    : "";
 
   return `
     <article class="show-card">
@@ -116,26 +141,41 @@ function eventCard(event) {
         <strong>${date.day}</strong>
       </time>
       <div>
+        ${image}
         <h3>${event["Artist / Event"] || "Event TBA"}</h3>
         <p>${event.Description || ""}</p>
         <div class="meta-row">
           ${event["Start Time"] ? `<span>${event["Start Time"]}</span>` : ""}
         </div>
-        ${links.length ? `<div class="link-row" aria-label="Artist links">${links.join("")}</div>` : ""}
+        ${artistLinks.length ? `<div class="link-row" aria-label="Artist links">${artistLinks.join("")}</div>` : ""}
+        ${mediaLinks.length ? `<div class="link-row media-row" aria-label="Event media">${mediaLinks.join("")}</div>` : ""}
       </div>
     </article>
   `;
 }
 
 function renderEvents(events) {
+  const today = todayTime();
   const published = events
     .filter((event) => (event.Status || "").toLowerCase() === "published")
-    .sort((a, b) => String(a.Date).localeCompare(String(b.Date)));
+    .filter((event) => {
+      const time = eventTime(event);
+      if (time === null) return eventsView === "upcoming";
+      return eventsView === "past" ? time < today : time >= today;
+    })
+    .sort((a, b) => {
+      const first = eventTime(a) || 0;
+      const second = eventTime(b) || 0;
+      return eventsView === "past" ? second - first : first - second;
+    });
 
   if (!eventsList) return;
 
   if (!published.length) {
-    eventsList.innerHTML = `<p class="form-note">No published events yet. Add rows in the calendar sheet and mark them Published.</p>`;
+    const message = eventsView === "past"
+      ? "No past events yet. They will appear here automatically after their date passes."
+      : "No upcoming published events yet. Add rows in the calendar sheet and mark them Published.";
+    eventsList.innerHTML = `<p class="form-note">${message}</p>`;
     return;
   }
 
