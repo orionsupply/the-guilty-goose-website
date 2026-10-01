@@ -1,7 +1,7 @@
 const form = document.querySelector("#signup-form");
 const note = document.querySelector("#form-note");
 const eventsList = document.querySelector("#events-list");
-const eventsCsvUrl = "https://docs.google.com/spreadsheets/d/1NXeC7ZEyJ7Wjt2sZKsbGYiPLk-uqQE8dXJRor5znkNY/gviz/tq?tqx=out:csv&sheet=Events";
+const eventsCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSPdQIiWVq-aw4bAbPij5gVyrszYU5fFAFJ7YJ1CjAINH1h1EHB8b4KXSjXST-pHHdYQody_a8b19A4/pub?gid=1665960344&single=true&output=csv";
 
 const fallbackEvents = [
   {
