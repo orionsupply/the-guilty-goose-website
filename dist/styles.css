@@ -95,11 +95,10 @@ nav a:focus-visible {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
-  min-height: 76vh;
-  gap: clamp(28px, 5vw, 64px);
-  align-items: end;
-  padding: clamp(64px, 9vw, 120px) clamp(18px, 5vw, 72px) clamp(42px, 6vw, 76px);
+  grid-template-rows: auto 1fr;
+  min-height: 82vh;
+  gap: clamp(26px, 4vw, 46px);
+  padding: clamp(42px, 6vw, 76px) clamp(18px, 5vw, 72px) clamp(36px, 5vw, 64px);
   background:
     linear-gradient(105deg, rgba(255, 253, 250, 0.94) 0%, rgba(255, 253, 250, 0.86) 45%, rgba(162, 22, 43, 0.12) 100%),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='900' viewBox='0 0 1400 900'%3E%3Crect width='1400' height='900' fill='%23221c18'/%3E%3Ccircle cx='1080' cy='180' r='160' fill='%23d79b37' opacity='.58'/%3E%3Crect x='0' y='650' width='1400' height='250' fill='%2314110f'/%3E%3Cpath d='M120 650h1180' stroke='%23f7efe1' stroke-width='8' opacity='.22'/%3E%3Cpath d='M340 220v430M700 180v470M1040 260v390' stroke='%23f7efe1' stroke-width='10' opacity='.12'/%3E%3Cpath d='M250 480c110-110 210-110 320 0s210 110 320 0 210-110 320 0' stroke='%23982f2f' stroke-width='16' fill='none' opacity='.75'/%3E%3C/svg%3E");
@@ -108,8 +107,14 @@ nav a:focus-visible {
   color: var(--ink);
 }
 
-.hero-copy {
-  max-width: 820px;
+.hero-intro {
+  max-width: 980px;
+}
+
+.hero-intro img {
+  display: block;
+  width: min(320px, 72vw);
+  margin-bottom: 26px;
 }
 
 .eyebrow {
@@ -132,7 +137,7 @@ h1 {
   max-width: 900px;
   margin-bottom: 20px;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(3rem, 8vw, 6.8rem);
+  font-size: clamp(2.8rem, 6.8vw, 5.8rem);
   line-height: 0.95;
 }
 
@@ -192,7 +197,7 @@ h3 {
   border-color: var(--line);
 }
 
-.tonight-card,
+.choice-card,
 .show-card,
 .hours-panel,
 .artist-board article,
@@ -203,15 +208,72 @@ h3 {
   box-shadow: var(--shadow);
 }
 
-.tonight-card {
-  padding: 26px;
-  color: var(--ink);
+.landing-choices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 3vw, 28px);
 }
 
-.tonight-card img {
-  display: block;
-  width: min(230px, 100%);
-  margin-bottom: 18px;
+.choice-card {
+  display: flex;
+  min-height: 390px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(24px, 4vw, 36px);
+  overflow: hidden;
+  position: relative;
+}
+
+.choice-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -40px -60px auto;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: rgba(185, 154, 89, 0.2);
+}
+
+.choice-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.store-choice {
+  background: #fffdfa;
+}
+
+.music-choice {
+  background: #f7e7e9;
+}
+
+.choice-card h2 {
+  max-width: 560px;
+  font-size: clamp(2.3rem, 4.4vw, 4.7rem);
+}
+
+.choice-card p {
+  max-width: 620px;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.65;
+}
+
+.choice-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 24px;
+}
+
+.choice-details span {
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.58);
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 800;
 }
 
 .card-label {
@@ -221,12 +283,43 @@ h3 {
   text-transform: uppercase;
 }
 
-.tonight-card a {
-  font-weight: 900;
-}
-
 .section {
   padding: clamp(54px, 8vw, 96px) clamp(18px, 5vw, 72px);
+}
+
+.store-info {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.7fr) minmax(0, 1.3fr);
+  gap: clamp(28px, 5vw, 72px);
+  background: var(--cream);
+}
+
+.store-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.store-grid article {
+  min-height: 190px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 253, 250, 0.85);
+}
+
+.store-grid p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.next-up {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .split {
@@ -455,16 +548,23 @@ fieldset {
     flex-direction: column;
   }
 
-  .hero,
+  .landing-choices,
   .split,
   .split.reverse,
+  .store-info,
   .updates {
     grid-template-columns: 1fr;
   }
 
   .hours-grid,
-  .artist-board {
+  .artist-board,
+  .store-grid {
     grid-template-columns: 1fr;
+  }
+
+  .next-up {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
 

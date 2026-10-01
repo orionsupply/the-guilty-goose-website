@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>The Guilty Goose | Live Music & Bar</title>
-    <meta name="description" content="Upcoming live music, bar hours, artist links, interviews, and show updates from The Guilty Goose.">
+    <title>The Guilty Goose | Liquor Store, Bar & Live Music</title>
+    <meta name="description" content="The Guilty Goose is home to an off-sale liquor store plus a bar and live music calendar.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -14,11 +14,12 @@
         <img class="brand-logo" src="guilty-goose-logo.jpg" alt="The Guilty Goose">
         <span>
           <strong>The Guilty Goose</strong>
-          <small>Live music, cold drinks, good nights</small>
+          <small>Off-sale liquor, bar nights, live music</small>
         </span>
       </a>
       <nav aria-label="Main navigation">
         <a href="#calendar">Shows</a>
+        <a href="#store">Liquor Store</a>
         <a href="#hours">Hours</a>
         <a href="#artists">Artists</a>
         <a href="#updates">Updates</a>
@@ -27,22 +28,70 @@
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow">The stage at The Guilty Goose</p>
-          <h1 id="hero-title">Upcoming bands, artist links, and bar nights in one place.</h1>
-          <p class="lead">Check what is coming up, follow the musicians before they play, and join the Goose list for show reminders and interview drops.</p>
-          <div class="hero-actions">
-            <a class="button primary" href="#calendar">See Upcoming Shows</a>
-            <a class="button secondary" href="#updates">Get Show Alerts</a>
-          </div>
+        <div class="hero-intro">
+          <img src="guilty-goose-logo.jpg" alt="The Guilty Goose">
+          <p class="eyebrow">Two ways to visit</p>
+          <h1 id="hero-title">The store side and the bar side, all under The Guilty Goose.</h1>
+          <p class="lead">Stop in for off-sale liquor, come back for drinks and live music, or keep an eye on the calendar for the next night out.</p>
         </div>
-        <aside class="tonight-card" aria-labelledby="tonight-title">
-          <img src="guilty-goose-logo.jpg" alt="" aria-hidden="true">
-          <span class="card-label">Next up</span>
-          <h2 id="tonight-title">Friday Night Patio Session</h2>
-          <p>7:30 PM | No cover | Full bar open</p>
-          <a href="#calendar">View details</a>
-        </aside>
+        <div class="landing-choices" aria-label="Choose a Guilty Goose section">
+          <article class="choice-card store-choice" id="store">
+            <span class="card-label">Off-sale liquor store</span>
+            <h2>Pick up your favorites.</h2>
+            <p>Use this side for store hours, featured bottles, mixers, party supplies, seasonal picks, and quick links for customers planning a stop.</p>
+            <div class="choice-details">
+              <span>Beer, wine, spirits</span>
+              <span>Ready for weekends</span>
+              <span>Local pickup info</span>
+            </div>
+            <a class="button primary" href="#store-info">Store Info</a>
+          </article>
+          <article class="choice-card music-choice">
+            <span class="card-label">Bar & live music</span>
+            <h2>See who is playing.</h2>
+            <p>Find upcoming bands, artist links, interview clips, bar hours, and the show update list for nights worth putting on the calendar.</p>
+            <div class="choice-details">
+              <span>Upcoming shows</span>
+              <span>Artist links</span>
+              <span>YouTube & TikTok interviews</span>
+            </div>
+            <a class="button primary" href="#calendar">Music Calendar</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section store-info" id="store-info" aria-labelledby="store-title">
+        <div>
+          <p class="eyebrow">Off-sale side</p>
+          <h2 id="store-title">Liquor store essentials.</h2>
+          <p class="section-copy">This section can grow into featured products, weekly specials, bourbon drops, holiday bundles, and ordering details. For now it gives the store equal visibility on the front page.</p>
+        </div>
+        <div class="store-grid">
+          <article>
+            <h3>Store Hours</h3>
+            <p>Add the confirmed off-sale hours here, including Sunday and holiday notes.</p>
+          </article>
+          <article>
+            <h3>What to Feature</h3>
+            <p>Seasonal bottles, local favorites, mixers, party packs, staff picks, and event-night carryout reminders.</p>
+          </article>
+          <article>
+            <h3>Questions</h3>
+            <p>Add a phone number or quick contact for availability questions once you are ready.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section next-up" aria-labelledby="tonight-title">
+        <div>
+          <p class="eyebrow">Bar side</p>
+          <h2 id="tonight-title">Next up: Friday Night Patio Session</h2>
+          <p class="section-copy">7:30 PM | No cover | Full bar open</p>
+        </div>
+        <div class="hero-actions">
+          <a class="button primary" href="#calendar">View details</a>
+          <a class="button secondary dark" href="#updates">Get show alerts</a>
+        </div>
       </section>
 
       <section class="section split" id="calendar" aria-labelledby="calendar-title">
