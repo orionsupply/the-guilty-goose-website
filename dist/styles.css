@@ -75,19 +75,23 @@ a {
 
 .mega-button {
   display: grid;
-  min-height: clamp(260px, 48vh, 520px);
+  aspect-ratio: 1;
+  min-height: 0;
   place-items: center;
   padding: clamp(24px, 5vw, 50px);
   border: 1px solid var(--line);
   border-radius: 8px;
   box-shadow: var(--shadow);
-  color: var(--ink);
+  color: #fff;
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(3.2rem, 8.5vw, 8rem);
   font-weight: 900;
   line-height: 0.9;
   text-align: center;
   text-decoration: none;
+  text-shadow: 0 4px 26px rgba(0, 0, 0, 0.72);
+  background-position: center;
+  background-size: cover;
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
@@ -100,11 +104,11 @@ a {
 }
 
 .offsale-button {
-  background: #fffdfa;
+  background-image: linear-gradient(rgba(20, 17, 15, 0.28), rgba(20, 17, 15, 0.6)), url("off-sale-button.jpg");
 }
 
 .events-button {
-  background: #f7e7e9;
+  background-image: linear-gradient(rgba(20, 17, 15, 0.18), rgba(20, 17, 15, 0.62)), url("bar-events-button.jpg");
 }
 
 .site-header {
