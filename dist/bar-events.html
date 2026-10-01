@@ -39,49 +39,10 @@
         <div>
           <p class="eyebrow">Music calendar</p>
           <h2 id="calendar-title">Upcoming Shows</h2>
-          <p class="section-copy">Sample dates are in place for now. Replace these with confirmed bookings, ticket links, and each artist's preferred social pages.</p>
+          <p class="section-copy">Add or update events in the shared Google Sheet. Rows marked Published show up here automatically once the sheet is published for web access.</p>
         </div>
-        <div class="show-list" aria-label="Upcoming show list">
-          <article class="show-card">
-            <time datetime="2026-10-02">
-              <span>Oct</span>
-              <strong>02</strong>
-            </time>
-            <div>
-              <h3>Friday Night Patio Session</h3>
-              <p>Local acoustic set with interview clips coming soon.</p>
-              <div class="meta-row">
-                <span>7:30 PM</span>
-                <span>No cover</span>
-                <span>21+ after 9 PM</span>
-              </div>
-              <div class="link-row" aria-label="Artist links">
-                <a href="#" aria-label="Artist website placeholder">Website</a>
-                <a href="#" aria-label="Artist YouTube placeholder">YouTube</a>
-                <a href="#" aria-label="Artist Instagram placeholder">Instagram</a>
-              </div>
-            </div>
-          </article>
-          <article class="show-card">
-            <time datetime="2026-10-10">
-              <span>Oct</span>
-              <strong>10</strong>
-            </time>
-            <div>
-              <h3>Saturday House Band</h3>
-              <p>Full-band set, drink specials, and a short pre-show Q&A.</p>
-              <div class="meta-row">
-                <span>8:00 PM</span>
-                <span>$5 cover</span>
-                <span>Inside stage</span>
-              </div>
-              <div class="link-row" aria-label="Artist links">
-                <a href="https://www.facebook.com/theguiltygoose">Facebook</a>
-                <a href="#">TikTok</a>
-                <a href="#">YouTube</a>
-              </div>
-            </div>
-          </article>
+        <div class="show-list" id="events-list" aria-label="Upcoming show list">
+          <p class="form-note">Loading events...</p>
         </div>
       </section>
 
