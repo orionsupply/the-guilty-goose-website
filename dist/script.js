@@ -6,21 +6,17 @@ const eventsCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSPdQIiWVq
 const fallbackEvents = [
   {
     Date: "2026-10-02",
-    Time: "7:30 PM",
+    "Start Time": "7:30 PM",
     "Artist / Event": "Friday Night Patio Session",
     Description: "Local acoustic set with interview clips coming soon.",
-    Cover: "No cover",
-    "Location / Age Notes": "21+ after 9 PM",
     Facebook: "https://www.facebook.com/theguiltygoose",
     Status: "Published",
   },
   {
     Date: "2026-10-10",
-    Time: "8:00 PM",
+    "Start Time": "8:00 PM",
     "Artist / Event": "Saturday House Band",
     Description: "Full-band set, drink specials, and a short pre-show Q&A.",
-    Cover: "$5 cover",
-    "Location / Age Notes": "Inside stage",
     Facebook: "https://www.facebook.com/theguiltygoose",
     Status: "Published",
   },
@@ -123,9 +119,7 @@ function eventCard(event) {
         <h3>${event["Artist / Event"] || "Event TBA"}</h3>
         <p>${event.Description || ""}</p>
         <div class="meta-row">
-          ${event.Time ? `<span>${event.Time}</span>` : ""}
-          ${event.Cover ? `<span>${event.Cover}</span>` : ""}
-          ${event["Location / Age Notes"] ? `<span>${event["Location / Age Notes"]}</span>` : ""}
+          ${event["Start Time"] ? `<span>${event["Start Time"]}</span>` : ""}
         </div>
         ${links.length ? `<div class="link-row" aria-label="Artist links">${links.join("")}</div>` : ""}
       </div>
